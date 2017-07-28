@@ -1,4 +1,4 @@
-package org.team5940.pantry.processing_network.ctre.talonsrx;
+package org.team5940.pantry.processing_network.ctre;
 
 import org.team5940.pantry.processing_network.Network;
 import org.team5940.pantry.processing_network.Node;
