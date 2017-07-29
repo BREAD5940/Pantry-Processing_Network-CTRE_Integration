@@ -21,6 +21,7 @@ public class TalonSRXNode extends Node {
 	/**
 	 * Stores the ValueNode for .set()
 	 */
+	// Maybe should be ? extends Number instead of double. Then when we set the motor speed we do .getValue().doubleValue(). 
 	ValueNode<? extends Double> setValue;
 	
 	/**
@@ -46,6 +47,7 @@ public class TalonSRXNode extends Node {
 	@Override
 	protected void doUpdate() {
 		for(CANTalon talon : this.talons) {
+			// What if this.setValue.getValue() = null. 
 			talon.set((this.setValue == null) ? 0 : this.setValue.getValue());
 		}
 	}
