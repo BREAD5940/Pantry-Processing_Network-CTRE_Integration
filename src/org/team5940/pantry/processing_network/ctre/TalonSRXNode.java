@@ -21,8 +21,7 @@ public class TalonSRXNode extends Node {
 	/**
 	 * Stores the ValueNode for .set()
 	 */
-	// Maybe should be ? extends Number instead of double. Then when we set the motor speed we do .getValue().doubleValue(). 
-	ValueNode<? extends Double> setValue;
+	ValueNode<? extends Number> setValue;
 	
 	/**
 	 * Constructs a new {@link TalonSRXNode}. Calls {@link Node#Node(Network, boolean, ValueNode...)} with (network, true, provided value nodes).
@@ -32,9 +31,9 @@ public class TalonSRXNode extends Node {
 	 * @throws IllegalArgumentException talons contains null or thrown by super constructor.
 	 * @throws IllegalStateException super constructor throws it.
 	 */
-	public TalonSRXNode(Network network, ValueNode<? extends Double> setValue, CANTalon... talons)
+	public TalonSRXNode(Network network, ValueNode<? extends Number> setValue, CANTalon... talons)
 			throws IllegalArgumentException, IllegalStateException {
-		super(network, true);//TODO add sources
+		super(network, true, setValue);
 		
 		for(CANTalon talon : talons) {
 			if(talon == null) {
@@ -47,8 +46,7 @@ public class TalonSRXNode extends Node {
 	@Override
 	protected void doUpdate() {
 		for(CANTalon talon : this.talons) {
-			// What if this.setValue.getValue() = null. 
-			talon.set((this.setValue == null) ? 0 : this.setValue.getValue());
+			talon.set((this.setValue == null) ? 0 : this.setValue.getValue().doubleValue());
 		}
 	}
 
