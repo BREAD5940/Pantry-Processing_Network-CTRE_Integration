@@ -1,5 +1,6 @@
 package org.team5940.pantry.processing_network.ctre.input;
 
+import org.team5940.pantry.logging.loggers.Logger;
 import org.team5940.pantry.processing_network.Network;
 import org.team5940.pantry.processing_network.Node;
 import org.team5940.pantry.processing_network.ProcessingNetworkUtils;
@@ -44,9 +45,9 @@ public class TalonSRXNode extends Node {
 	 * @throws IllegalStateException
 	 *             super constructor throws it.
 	 */
-	public TalonSRXNode(Network network, boolean requireUpdate, ValueNode<? extends Number> setValue,
+	public TalonSRXNode(Network network, Logger logger, boolean requireUpdate, ValueNode<? extends Number> setValue,
 			CANTalon... talons) throws IllegalArgumentException, IllegalStateException {
-		super(network, requireUpdate, setValue);
+		super(network, logger, requireUpdate, setValue);
 
 		ProcessingNetworkUtils.checkArrayArguments(talons);
 

@@ -1,5 +1,6 @@
 package org.team5940.pantry.processing_network.ctre.output;
 
+import org.team5940.pantry.logging.loggers.Logger;
 import org.team5940.pantry.processing_network.Network;
 import org.team5940.pantry.processing_network.ProcessingNetworkUtils;
 import org.team5940.pantry.processing_network.ValueNode;
@@ -25,9 +26,9 @@ public class TalonSRXEncoderPositionValueNode extends ValueNode<Integer> {
 	 * @throws IllegalStateException
 	 *             If the network has started already.
 	 */
-	public TalonSRXEncoderPositionValueNode(Network network, CANTalon encoderTalon)
+	public TalonSRXEncoderPositionValueNode(Network network, Logger logger, CANTalon encoderTalon)
 			throws IllegalArgumentException, IllegalStateException {
-		super(network);
+		super(network, logger);
 		ProcessingNetworkUtils.checkArgument(encoderTalon);
 		this.encoderTalon = encoderTalon;
 	}
