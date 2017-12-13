@@ -1,4 +1,4 @@
-package org.team5940.pantry.processing_network.ctre.input;
+package org.team5940.pantry.processing_network.ctre.output;
 
 import org.team5940.pantry.logging.loggers.Logger;
 import org.team5940.pantry.processing_network.Network;
@@ -52,6 +52,7 @@ public class TalonSRXNode extends Node {
 		ProcessingNetworkUtils.checkArrayArguments(talons);
 
 		this.talons = talons;
+		this.setValue = setValue;
 	}
 
 	@Override

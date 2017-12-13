@@ -1,4 +1,4 @@
-package org.team5940.pantry.processing_network.ctre.output;
+package org.team5940.pantry.processing_network.ctre.input;
 
 import org.team5940.pantry.logging.loggers.Logger;
 import org.team5940.pantry.processing_network.Network;
