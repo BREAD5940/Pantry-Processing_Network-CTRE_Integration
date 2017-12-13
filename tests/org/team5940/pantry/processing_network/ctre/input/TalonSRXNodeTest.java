@@ -3,6 +3,7 @@ package org.team5940.pantry.processing_network.ctre.input;
 import org.junit.Test;
 import org.team5940.pantry.processing_network.FullSystemTest;
 import org.team5940.pantry.processing_network.Network;
+import org.team5940.pantry.processing_network.ctre.output.TalonSRXNode;
 import org.team5940.pantry.processing_network.functional.ConstantValueNode;
 
 public class TalonSRXNodeTest {

@@ -3,6 +3,7 @@ package org.team5940.pantry.processing_network.ctre.output;
 import org.junit.Test;
 import org.team5940.pantry.processing_network.FullSystemTest;
 import org.team5940.pantry.processing_network.Network;
+import org.team5940.pantry.processing_network.ctre.input.TalonSRXEncoderPositionValueNode;
 
 public class TalonSRXEncoderPositionValueNodeTest {
 	
