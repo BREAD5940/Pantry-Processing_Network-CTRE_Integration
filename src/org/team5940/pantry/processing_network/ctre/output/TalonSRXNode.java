@@ -35,7 +35,7 @@ public class TalonSRXNode extends Node {
 	 * 
 	 * @param network
 	 *            The network that this node will be a member of.
-	 * @param A
+	 * @param setValue
 	 *            source for the value to .set() the talons. Default is 0 if
 	 *            null.
 	 * @param talons
@@ -45,8 +45,7 @@ public class TalonSRXNode extends Node {
 	 * @throws IllegalStateException
 	 *             super constructor throws it.
 	 */
-	public TalonSRXNode(Network network, Logger logger, boolean requireUpdate, ValueNode<? extends Number> setValue,
-			CANTalon... talons) throws IllegalArgumentException, IllegalStateException {
+	public TalonSRXNode(Network network, Logger logger, boolean requireUpdate, ValueNode<? extends Number> setValue, CANTalon... talons) throws IllegalArgumentException, IllegalStateException {
 		super(network, logger, requireUpdate, setValue);
 
 		ProcessingNetworkUtils.checkArrayArguments(talons);
