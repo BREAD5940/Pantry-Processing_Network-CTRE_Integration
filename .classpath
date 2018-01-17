@@ -3,11 +3,12 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="tests"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="var" path="USERLIBS_DIR/CTRLib.jar"/>
+	<classpathentry kind="var" path="USERLIBS_DIR/CTRLib.jar" sourcepath="/CTRE_SOURCES"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Pantry-Processing_Network"/>
 	<classpathentry kind="var" path="wpilib"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Pantry-Logging"/>
 	<classpathentry kind="var" path="GSON"/>
+	<classpathentry kind="var" path="USERLIBS_DIR/CTRE_Phoenix.jar" sourcepath="/CTRE_SOURCES"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

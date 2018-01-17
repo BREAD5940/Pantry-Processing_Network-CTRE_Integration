@@ -6,11 +6,13 @@ import org.team5940.pantry.processing_network.ProcessingNetworkUtils;
 import org.team5940.pantry.processing_network.ValueNode;
 
 import com.ctre.CANTalon;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 public class TalonSRXEncoderVelocityValueNode extends ValueNode<Integer> {
 
-	CANTalon encoderTalon;
+	TalonSRX encoderTalon;
 
+	// TODO comment
 	/**
 	 * Stores the velocity of the encoder for the talon. This uses
 	 * {@link CANTalon#getEncVelocity()} to find the velocity. Does not do
@@ -21,17 +23,17 @@ public class TalonSRXEncoderVelocityValueNode extends ValueNode<Integer> {
 	 * @throws IllegalArgumentException
 	 * @throws IllegalStateException
 	 */
-	public TalonSRXEncoderVelocityValueNode(Network network, Logger logger, CANTalon encoderTalon)
+	public TalonSRXEncoderVelocityValueNode(Network network, Logger logger, TalonSRX encoderTalon)
 			throws IllegalArgumentException, IllegalStateException {
 		super(network, logger);
-		// TODO Auto-generated constructor stub
 		ProcessingNetworkUtils.checkArgument(encoderTalon);
 		this.encoderTalon = encoderTalon;
 	}
 
 	@Override
 	protected Integer updateValue() {
-		return this.encoderTalon.getEncVelocity();
+		// TODO figure out if this works. 
+		return this.encoderTalon.getSelectedSensorVelocity(0);
 	}
 
 }

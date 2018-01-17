@@ -6,7 +6,8 @@ import org.team5940.pantry.processing_network.Node;
 import org.team5940.pantry.processing_network.ProcessingNetworkUtils;
 import org.team5940.pantry.processing_network.ValueNode;
 
-import com.ctre.CANTalon;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 /**
  * This class accepts input from various source nodes provided on initialization
@@ -21,12 +22,17 @@ public class TalonSRXNode extends Node {
 	/**
 	 * Stores the array of talons to control.
 	 */
-	CANTalon[] talons;
+	TalonSRX[] talons;
 
 	/**
 	 * Stores the ValueNode for .set()
 	 */
 	ValueNode<? extends Number> setValue;
+
+	/**
+	 * Sets the ControlMode for the Talon when setting the speed.
+	 */
+	ValueNode<? extends ControlMode> controlModeValueNode;
 
 	/**
 	 * Constructs a new {@link TalonSRXNode}. Calls
@@ -36,8 +42,10 @@ public class TalonSRXNode extends Node {
 	 * @param network
 	 *            The network that this node will be a member of.
 	 * @param setValue
-	 *            source for the value to .set() the talons. Default is 0 if
-	 *            null.
+	 *            source for the value to .set() the talons. Default is 0 if null.
+	 * @param controlModeValueNode
+	 *            Sets the ControlMode for the TalonSRX. May want to use a
+	 *            ConstantValueNode for this.
 	 * @param talons
 	 *            One or more talons that this controls.
 	 * @throws IllegalArgumentException
@@ -45,19 +53,22 @@ public class TalonSRXNode extends Node {
 	 * @throws IllegalStateException
 	 *             super constructor throws it.
 	 */
-	public TalonSRXNode(Network network, Logger logger, boolean requireUpdate, ValueNode<? extends Number> setValue, CANTalon... talons) throws IllegalArgumentException, IllegalStateException {
-		super(network, logger, requireUpdate, setValue);
+	public TalonSRXNode(Network network, Logger logger, boolean requireUpdate,
+			ValueNode<? extends ControlMode> controlModeValueNode, ValueNode<? extends Number> setValue,
+			TalonSRX... talons) throws IllegalArgumentException, IllegalStateException {
+		super(network, logger, requireUpdate, setValue, controlModeValueNode);
 
 		ProcessingNetworkUtils.checkArrayArguments(talons);
 
 		this.talons = talons;
 		this.setValue = setValue;
+		this.controlModeValueNode = controlModeValueNode;
 	}
 
 	@Override
 	protected void doUpdate() {
-		for (CANTalon talon : this.talons) {
-			talon.set(this.setValue.getValue().doubleValue());
+		for (TalonSRX talon : this.talons) {
+			talon.set(this.controlModeValueNode.getValue(), this.setValue.getValue().doubleValue());
 		}
 	}
 
