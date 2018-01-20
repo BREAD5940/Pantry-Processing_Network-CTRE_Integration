@@ -6,10 +6,11 @@ import org.team5940.pantry.processing_network.ProcessingNetworkUtils;
 import org.team5940.pantry.processing_network.ValueNode;
 
 import com.ctre.CANTalon;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 public class TalonSRXEncoderPositionValueNode extends ValueNode<Integer> {
 
-	CANTalon encoderTalon;
+	TalonSRX encoderTalon;
 
 	/**
 	 * Stores the position of the encoder in whatever unit the encoder uses.
@@ -26,7 +27,7 @@ public class TalonSRXEncoderPositionValueNode extends ValueNode<Integer> {
 	 * @throws IllegalStateException
 	 *             If the network has started already.
 	 */
-	public TalonSRXEncoderPositionValueNode(Network network, Logger logger, CANTalon encoderTalon)
+	public TalonSRXEncoderPositionValueNode(Network network, Logger logger, TalonSRX encoderTalon)
 			throws IllegalArgumentException, IllegalStateException {
 		super(network, logger);
 		ProcessingNetworkUtils.checkArgument(encoderTalon);
@@ -35,7 +36,8 @@ public class TalonSRXEncoderPositionValueNode extends ValueNode<Integer> {
 
 	@Override
 	protected Integer updateValue() {
-		return this.encoderTalon.getEncPosition();
+		// TODO figure out what the 0 is. 
+		return this.encoderTalon.getSelectedSensorPosition(0);
 	}
 
 }

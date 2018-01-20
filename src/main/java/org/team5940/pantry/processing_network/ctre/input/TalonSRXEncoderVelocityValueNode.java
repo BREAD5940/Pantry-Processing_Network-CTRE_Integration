@@ -5,7 +5,6 @@ import org.team5940.pantry.processing_network.Network;
 import org.team5940.pantry.processing_network.ProcessingNetworkUtils;
 import org.team5940.pantry.processing_network.ValueNode;
 
-import com.ctre.CANTalon;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 public class TalonSRXEncoderVelocityValueNode extends ValueNode<Integer> {
@@ -32,7 +31,7 @@ public class TalonSRXEncoderVelocityValueNode extends ValueNode<Integer> {
 
 	@Override
 	protected Integer updateValue() {
-		// TODO figure out if this works. 
+		// TODO figure out what the 0 is. 
 		return this.encoderTalon.getSelectedSensorVelocity(0);
 	}
 
