@@ -7,6 +7,12 @@ import org.team5940.pantry.processing_network.ProcessingNetworkUtils;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+/**
+ * This returns the voltage going to a motor based on what the TalonSRX says.
+ * 
+ * @author mbent
+ *
+ */
 public class TalonSRXMotorOutputVoltageValueNode extends ValueNode<Double> {
 
 	/**
