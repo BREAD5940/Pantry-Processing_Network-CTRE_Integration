@@ -8,3 +8,4 @@ cache:
     - $HOME/.gradle/wrapper/
 install: git clone https://github.com/BREAD5940/Pantry-Logging && git clone https://github.com/BREAD5940/Pantry-Processing_Network
 script: ./gradlew test --include-build "./Pantry-Logging" --include-build "./Pantry-Processing_Network"
+after_script: echo hello
