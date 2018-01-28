@@ -10,7 +10,7 @@ public class TalonSRXEncoderPositionValueNodeTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void talonSRXEncoderPositionValueNode_NullCANTalon_IllegalArgumentException() {
 		Network network = new Network(2000, FullSystemTest.defaultLogger);
-		new TalonSRXEncoderPositionValueNode(network, FullSystemTest.defaultLogger, null);
+		new TalonSRXEncoderPositionValueNode(network, FullSystemTest.defaultLogger, FullSystemTest.defaultLabel, null);
 	}
 	
 }

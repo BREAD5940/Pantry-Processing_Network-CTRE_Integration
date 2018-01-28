@@ -1,16 +1,16 @@
 package org.team5940.pantry.processing_network.ctre.input;
 
+import org.team5940.pantry.logging.LoggingUtils;
 import org.team5940.pantry.logging.loggers.Logger;
 import org.team5940.pantry.processing_network.Network;
 import org.team5940.pantry.processing_network.ValueNode;
-import org.team5940.pantry.processing_network.ProcessingNetworkUtils;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 /**
  * This returns the voltage going to a motor based on what the TalonSRX says.
  * 
- * @author mbent
+ * @author Michael Bentley
  *
  */
 public class TalonSRXMotorOutputVoltageValueNode extends ValueNode<Double> {
@@ -29,13 +29,15 @@ public class TalonSRXMotorOutputVoltageValueNode extends ValueNode<Double> {
 	 *            This' Network.
 	 * @param logger
 	 *            This' Logger.
+	 * @param label
+	 *            This' label.
 	 * @param talon
 	 *            The talon to measure the voltage of.
 	 */
-	public TalonSRXMotorOutputVoltageValueNode(Network network, Logger logger, TalonSRX talon)
+	public TalonSRXMotorOutputVoltageValueNode(Network network, Logger logger, String label, TalonSRX talon)
 			throws IllegalArgumentException, IllegalStateException {
-		super(network, logger);
-		ProcessingNetworkUtils.checkArgument(talon);
+		super(network, logger, label);
+		LoggingUtils.checkArgument(talon);
 		this.talon = talon;
 	}
 
