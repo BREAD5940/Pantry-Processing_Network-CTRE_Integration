@@ -10,7 +10,7 @@ public class TalonSRXEncoderVelocityValueNodeTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void talonSRXEncoderVelocityValueNode_NullCANTalon_IllegalArgumentException() {
 		Network network = new Network(2000, FullSystemTest.defaultLogger);
-		new TalonSRXEncoderVelocityValueNode(network, FullSystemTest.defaultLogger, null);
+		new TalonSRXEncoderVelocityValueNode(network, FullSystemTest.defaultLogger, FullSystemTest.defaultLabel, null);
 	}
 
 }

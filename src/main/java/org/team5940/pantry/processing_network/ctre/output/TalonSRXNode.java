@@ -1,9 +1,9 @@
 package org.team5940.pantry.processing_network.ctre.output;
 
+import org.team5940.pantry.logging.LoggingUtils;
 import org.team5940.pantry.logging.loggers.Logger;
 import org.team5940.pantry.processing_network.Network;
 import org.team5940.pantry.processing_network.Node;
-import org.team5940.pantry.processing_network.ProcessingNetworkUtils;
 import org.team5940.pantry.processing_network.ValueNode;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -41,6 +41,12 @@ public class TalonSRXNode extends Node {
 	 * 
 	 * @param network
 	 *            The network that this node will be a member of.
+	 * @param logger
+	 *            This' logger
+	 * @param label
+	 *            This' label.
+	 * @param requireUpdate
+	 *            If this Node should be updated.
 	 * @param setValue
 	 *            source for the value to .set() the talons. Default is 0 if null.
 	 * @param controlModeValueNode
@@ -53,12 +59,12 @@ public class TalonSRXNode extends Node {
 	 * @throws IllegalStateException
 	 *             super constructor throws it.
 	 */
-	public TalonSRXNode(Network network, Logger logger, boolean requireUpdate,
+	public TalonSRXNode(Network network, Logger logger, String label, boolean requireUpdate,
 			ValueNode<? extends ControlMode> controlModeValueNode, ValueNode<? extends Number> setValue,
 			TalonSRX... talons) throws IllegalArgumentException, IllegalStateException {
-		super(network, logger, requireUpdate, setValue, controlModeValueNode);
+		super(network, logger, label, requireUpdate, setValue, controlModeValueNode);
 
-		ProcessingNetworkUtils.checkArrayArguments(talons);
+		LoggingUtils.checkArrayArguments(talons);
 
 		this.talons = talons;
 		this.setValue = setValue;

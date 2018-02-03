@@ -1,9 +1,9 @@
 package org.team5940.pantry.processing_network.ctre.input;
 
+import org.team5940.pantry.logging.LoggingUtils;
 import org.team5940.pantry.logging.loggers.Logger;
 import org.team5940.pantry.processing_network.Network;
 import org.team5940.pantry.processing_network.ValueNode;
-import org.team5940.pantry.processing_network.ProcessingNetworkUtils;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
@@ -27,13 +27,15 @@ public class TalonSRXOutputPercentValueNode extends ValueNode<Double> {
 	 *            This' Network
 	 * @param logger
 	 *            This' Logger
+	 * @param label
+	 *            This' label.
 	 * @param talon
 	 *            The TalonSRX to measure the output of.
 	 */
-	public TalonSRXOutputPercentValueNode(Network network, Logger logger, TalonSRX talon)
+	public TalonSRXOutputPercentValueNode(Network network, Logger logger, String label, TalonSRX talon)
 			throws IllegalArgumentException, IllegalStateException {
-		super(network, logger);
-		ProcessingNetworkUtils.checkArgument(talon);
+		super(network, logger, label);
+		LoggingUtils.checkArgument(talon);
 
 	}
 
