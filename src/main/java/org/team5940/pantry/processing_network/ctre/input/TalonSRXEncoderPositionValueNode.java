@@ -37,7 +37,6 @@ public class TalonSRXEncoderPositionValueNode extends ValueNode<Integer> {
 
 	@Override
 	protected Integer updateValue() {
-		// TODO figure out what the 0 is. 
 		return this.encoderTalon.getSelectedSensorPosition(0);
 	}
 
