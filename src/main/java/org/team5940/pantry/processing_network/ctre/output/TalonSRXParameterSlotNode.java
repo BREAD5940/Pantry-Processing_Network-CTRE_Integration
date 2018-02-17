@@ -54,6 +54,7 @@ public class TalonSRXParameterSlotNode extends ChangeDetectorValueNode<Integer, 
 		super(network, logger, label, requireUpdate, slotParameterValueNode);
 		LoggingUtils.checkArrayArguments(talons);
 
+		this.talons = talons;
 		this.slotParameterValueNode = slotParameterValueNode;
 	}
 
